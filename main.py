@@ -18,6 +18,7 @@ def make_request(args, user, password):
     if args.verbose:
         print(f"Trying: {user}, {password} - Status code: {result.status_code}")
     if args.non_code != None:
+
         if result.status_code == args.non_code:
             return False
         else:
@@ -75,7 +76,7 @@ if __name__ == "__main__":
     parser.add_argument('-P', '--pass-wordlist', help='Worlist to use for the password')
     parser.add_argument('-U', '--user-wordlist', help='Worlist to use for the username')
     parser.add_argument('-c', '--code', help='Return code to consider as a success try', default=200)
-    parser.add_argument('-n', '--non-code', help='Return code to consider as a failure try')
+    parser.add_argument('-n', '--non-code', help='Return code to consider as a failure try', default=None, type=int)
     parser.add_argument('-v', '--verbose', help='Verbose mode', action='store_true')
     args = parser.parse_args()
 
